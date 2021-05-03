@@ -116,13 +116,17 @@ class Main:
                         print(f"Student id : {student.get_sid()} \t Student name : {student.get_sname()} \t Mark : {mark.get_value()}")
 
 
+    def run_main(self):
+        m.input_number_course()
+        m.input_number_student()
+        m.input_student_infor()
+        m.input_course_infor()
+        m.input_course_mark()
+        m.list_courses()
+        m.list_students()
+        m.list_marks()
 
-m = Main()
-m.input_number_course()
-m.input_number_student()
-m.input_student_infor()
-m.input_course_infor()
-m.input_course_mark()
-m.list_courses()
-m.list_students()
-m.list_marks()
+
+if __name__ == '__main__':
+    m = Main()
+    m.run_main()
