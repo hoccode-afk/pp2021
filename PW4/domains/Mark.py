@@ -1,4 +1,3 @@
-# ! usr/bin/python3
 
 # Mark class - Child class
 class Mark():

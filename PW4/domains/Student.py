@@ -1,4 +1,3 @@
-# ! usr/bin/python3
 
 # Student class - Parent class
 class Student:

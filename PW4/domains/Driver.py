@@ -1,5 +1,5 @@
-from PW4.input import *
-from PW4.output import *
+from PW4.Input import *
+from PW4.Output import *
 
 
 class Driver():
@@ -17,7 +17,7 @@ class Driver():
 
     
     # Function to run the program
-    def run_Driver(self, inputt, output):
+    def run_Driver(self):
         print("Please select operation: \n"           \
                 "1.Input number of students \n"       \
                 "2.Input number of courses \n"        \
@@ -33,25 +33,25 @@ class Driver():
         while True:
             select = int(input("Select operations form 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11:"))
             if select == 1:
-                inputt.input_number_students()    
+                self.input_number_students()    
             elif select == 2:
-                inputt.input_number_courses()
+                self.input_number_courses()
             elif select == 3:
-                inputt.input_students_infor()
+                self.input_students_infor()
             elif select == 4:
-                inputt.input_courses_infor()
+                self.input_courses_infor()
             elif select == 5:
-                inputt.input_mark()
+                self.input_mark()
             elif select == 6:
-                output.calculate_GPA()
+                self.calculate_GPA()
             elif select == 7:
-                output.self.sort_student_list()
+                self.self.sort_student_list()
             elif select == 8:
-                output.list_students()
+                self.list_students()
             elif select == 9:
-                output.list_courses()
+                self.list_courses()
             elif select == 10:
-                output.list_mark()
+                self.list_mark()
             elif select == 11:
                 print("Existed!!!")
                 break

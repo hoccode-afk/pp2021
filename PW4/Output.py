@@ -6,7 +6,7 @@ from PW4.domains.Mark import *
 
 class Output:
     
-      # Function to calculate GPA for given student
+    # Function to calculate GPA for given student
     def calculate_GPA(self):
         while True:
             try:

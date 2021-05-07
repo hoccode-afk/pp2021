@@ -3,44 +3,42 @@ from PW4.domains.Student import *
 from PW4.domains.Course import *
 from PW4.domains.Mark import *
 
-class Input:
 
+class Input:
+    
     # Function to input number of students
-    def input_number_students(self, driver):
+    def input_number_students(self):
         while True:
             try:
-                nofstudents = int(input("Enter number of students: "))
-                while nofstudents <= 0:
+                self.nofstudents = int(input("Enter number of students: "))
+                while self.nofstudents <= 0:
                     print("Number of students has to be positive integer!!!\n")
-                    nofstudents = int(input("Enter again number of students: "))
+                    self.nofstudents = int(input("Enter again number of students: "))
             except:
                 print("Number of students has to be positive integer!!!\n")
             else:
                 break
-        driver.nofstudents = nofstudents
-
 
     # Function to input number of courses
-    def input_number_courses(self, driver):
+    def input_number_courses(self):
         while True:
             try:
-                driver.nofcourses = int(input("Enter number of courses: "))
-                while driver.nofcourses <= 0:
+                self.nofcourses = int(input("Enter number of courses: "))
+                while self.nofcourses <= 0:
                     print("Number of couses has to be positive integer!!!\n")
-                    nofcourses = int(input("Enter again number of courses: "))
+                    self.nofcourses = int(input("Enter again number of courses: "))
             except:
                 print("Number of courses has to be positive integer!!!\n")
             else:
                 break
-        driver.nofcourses = nofcourses
 
 
     # Function to input information of students
-    def input_students_infor(self, driver):
-        if driver.nofstudents <= 0:
+    def input_students_infor(self):
+        if self.nofstudents <= 0:
             print("Student list is empty. Please enter number of students!!!")
-        elif driver.nofstudents > len(self(driver.students):
-            for i in range(0, driver.nofstudents):
+        elif self.nofstudents > len(self.students):
+            for i in range(0, self.nofstudents):
                 print(f"Enter information of student #{i + 1}")
                 while True:
                     try:
@@ -75,7 +73,7 @@ class Input:
                 self.students.append(Student(sid, sname, sdob))
         else:
             print(f"The student list is full({len(self.students)} students).Please use function 1 to extra student list")
-
+    
 
     # Function to input information of courses
     def input_courses_infor(self):
