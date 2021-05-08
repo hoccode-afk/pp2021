@@ -1,4 +1,4 @@
-from PW4.domains.Driver import *
+from domains.Driver import Driver
 
 # Create object driver
 d = Driver()
