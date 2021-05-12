@@ -1,8 +1,7 @@
-
 # Student class - Parent class
 class Student:
     # Contructor
-    def __init__(self, sid, sname, sdob, gpa=0):
+    def __init__(self, driver, sid, sname, sdob, gpa=0):
         self.sid = sid
         self.sname = sname
         self.sdob = sdob
@@ -12,7 +11,7 @@ class Student:
     def get_sid(self):
         return self.sid
 
-    def get_sname(self):
+    def get_sname(self): 
         return self.sname
 
     def get_sdob(self):

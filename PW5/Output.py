@@ -38,7 +38,6 @@ class Output:
         list_score = np.array([])
         list_credit = np.array([])
 
-        check = 0
         for mark in self.driver.marks:
             if sid == mark.get_student().get_sid():
                 list_score = np.append(list_score, mark.get_value())

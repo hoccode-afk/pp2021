@@ -1,8 +1,7 @@
-
 # Mark class - Child class
 class Mark():
     # Contructor
-    def __init__(self, student, course, value):
+    def __init__(self, driver, student, course, value):
         self.student = student
         self.course = course
         self.value = value

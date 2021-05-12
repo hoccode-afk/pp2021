@@ -1,8 +1,7 @@
-
 # Course class - Parent class
 class Course:
     # Contructor
-    def __init__(self, cid, cname, credit):
+    def __init__(self, driver, cid, cname, credit):
         self.cid = cid
         self.cname = cname
         self.credit = credit
@@ -17,7 +16,8 @@ class Course:
     def get_credit(self):
         return self.credit
 
-     #Set methods
+    
+    #Set methods
     def set_cname(self, cname):
         self.cname = cname
 

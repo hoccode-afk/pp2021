@@ -3,9 +3,7 @@ import Output
 import os
 import zipfile
 
-
 class Driver:
-
     # Class variable
     # List to store information of students
     students = []
@@ -21,11 +19,10 @@ class Driver:
     def __init__(self):
         self.input = Input.Input(self)
         self.output = Output.Output(self)
-
+    
 
     # Function to run the program
     def run_Driver(self):
-
         #Upon starting the program
         if os.path.isfile('students.dat'):  # Check if students.dat exist
                 zip_file = zipfile.ZipFile('students.dat', 'r')
@@ -33,16 +30,22 @@ class Driver:
                 if os.path.isfile('marks.txt'):  # Load data from students.txt
                     mf = open('marks.txt', 'r').read().splitlines()
                     self.nofstudents = int((len(mf)-1) / 7)
-                    for i in range(1, self.nofstudents):
-                        Input.input_file(int(mf[i * 3]), mf[i * 3 + 1], mf[i * 3 + 2], int(mf[i * 3 + 3]), mf[i * 3 + 4], int(mf[i * 3 + 5]), int(mf[i * 3 + 6]) )
-                
+                    for i in range(self.nofstudents):
+                        Input.input_mark_file(self, int(mf[i * 3]), mf[i * 3 + 1], mf[i * 3 + 2], int(mf[i * 3 + 3]), mf[i * 3 + 4], int(mf[i * 3 + 5]), int(mf[i * 3 + 6]) )
+
+
                 if os.path.isfile('courses.txt'):
                     cf = open('courses.txt', 'r').read().splitlines()
-                    self.nofcourses = int(cf[0])
-                
+                    self.nofcourses = int(len(cf)/3)
+                    for i in range(self.nofcourses):
+                        Input.input_courses_file(self, int(cf[i*3]), cf[i * 3 + 1], int(cf[i * 3 + 2]))
+
+
                 if os.path.isfile('students.txt'):
                     sf = open('students.txt', 'r').read().splitlines()
-                    self.nofstudents = int(sf[0])
+                    self.nofstudents = int(len(sf)/3)
+                    for i in range(self.nofstudents):
+                        Input.input_students_file(self, int(sf[i*3]), sf[i * 3 +1], sf[i * 3 + 2])
 
 
         print("Please select operation: \n"
@@ -57,7 +60,6 @@ class Driver:
               "9.List courses \n"
               "10.List marks \n"
               "11.Exit")
-              
         while True:
             select = int(input("Select operations form 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11:"))
             if select == 1:
