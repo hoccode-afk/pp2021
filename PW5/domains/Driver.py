@@ -67,11 +67,11 @@ class Driver:
             elif select == 2:
                 self.input.input_number_courses()
             elif select == 3:
-                self.input.input_students_infor()
+                self.input.input_students_infor(self)
             elif select == 4:
-                self.input.input_courses_infor()
+                self.input.input_courses_infor(self)
             elif select == 5:
-                self.input.input_mark()
+                self.input.input_mark(self)
             elif select == 6:
                 self.output.calculate_GPA()
             elif select == 7:
