@@ -11,6 +11,8 @@ class Driver:
     courses = []
     # List to store information of marks
     marks = []
+    # List to store all datas to compress to .dat file
+    studentmark = []
 
     # Class variable
     nofstudents = None
@@ -24,34 +26,30 @@ class Driver:
     def run_Driver(self):
         #Upon starting the program
         if os.path.isfile('students.dat'):  # Check if students.dat exist
-            # Load number of students and number of courses
+            # Open and read students.dat - binary access mode
             students_file1 = open('students.dat', 'rb')
-            self.nofstudents = pickle.load(students_file1)
-            self.nofcourses = pickle.load(students_file1)
+            studentmark_list = pickle.load(students_file1)
+            if len(studentmark_list) >= 2:
+                # Load information of students
+                # Load number of students and number of courses
+                # Have to input nofstudent and nofcourse at same time
+                self.nofstudents = studentmark_list[0] 
+                self.nofcourses = studentmark_list[1]
 
             # Load information of students
-            list_students = pickle.load(students_file1)
-            i = 1
-            for student in list_students:
-                if i <= len(self.nofstudents):
-                    self.students.append(student)
-                    i = i + 1
-                else:
-                    break
+            if len(studentmark_list) >= (self.nofstudents + 2):
+                for i in range(self.nofstudents): 
+                    self.students.append(studentmark_list[i+2])
+        
             #Load information of courses
-            list_students2 = pickle.load(students_file1)
-            j = 1
-            for course in list_students2:
-                if i <= len(self.nofcourses):
-                    self.courses.append(course)
-                    j = j + 1
-                else:
-                    break
+            if len(studentmark_list) >= (self.nofcourses + self.nofstudents + 2):
+                for i in range(self.nofcourses): 
+                    self.courses.append(studentmark_list[i + 2 + self.nofstudents])
 
             #Load information of marks
-            list_students3 = pickle.load(students_file1)
-            for mark in list_students3:
-                self.marks.append(mark)
+            if (len(studentmark_list) - self.nofstudents - self.nofcourses - 2) > 0: 
+                for i in range(len(studentmark_list) - self.nofstudents - self.nofcourses - 2):
+                    self.marks.append(studentmark_list[i + 2 + self.nofstudents + self.nofcourses])
 
             students_file1.close()
 
@@ -90,6 +88,9 @@ class Driver:
             elif select == 10:
                 self.output.list_mark()
             elif select == 11:
+                file = open('students.dat', 'wb')
+                pickle.dump(self.studentmark, file)
+                file.close()
                 print("Exited!!!")
                 break
             else:

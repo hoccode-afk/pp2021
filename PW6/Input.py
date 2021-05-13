@@ -2,7 +2,6 @@ import math
 from domains.Student import *
 from domains.Course import *
 from domains.Mark import *
-import pickle
 
 
 class Input:
@@ -10,45 +9,39 @@ class Input:
     def __init__(self, driver):
         self.driver = driver
 
-    data = open('student.dat', 'wb')
-
     # Function to input number of students
     def input_number_students(self):
         while True:
             try:
                 self.driver.nofstudents = int(input("Enter number of students: "))
+
                 while self.driver.nofstudents <= 0:
                     print("Number of students has to be positive integer!!!\n")
                     self.driver.nofstudents = int(input("Enter again number of students: "))
-                    #Writing data to students.dat file
-                    pickle.dump(self.driver.nofstudents, self.data) #1st element of students.dat
+                
+                self.driver.studentmark.append(self.driver.nofstudents)
             except:
                 print("Number of students has to be positive integer!!!\n")
             else:
                 break
-        
-        # #Writing data to students.dat file
-        # pickle.dump(self.driver.nofstudents, self.data) #1st element of students.dat
-
 
     # Function to input number of courses
     def input_number_courses(self):
         while True:
             try:
                 self.driver.nofcourses = int(input("Enter number of courses: "))
+            
                 while self.driver.nofcourses <= 0:
                     print("Number of couses has to be positive integer!!!\n")
                     self.driver.nofcourses = int(input("Enter again number of courses: "))
-                    #Writing data to students.dat file
-                    pickle.dump(self.driver.nofcourses, self.data) #2nd element of students.dat
+                
+                self.driver.studentmark.append(self.driver.nofcourses)
             except:
                 print("Number of courses has to be positive integer!!!\n")
             else:
                 break
 
-        # #Writing data to students.dat file
-        # pickle.dump(self.driver.nofcourses, self.data) #2nd element of students.dat
-        
+
     # Function to input information of students
     def input_students_infor(self, driver):
         if  self.driver.nofstudents == None or self.driver.nofstudents <= 0:
@@ -85,10 +78,9 @@ class Input:
                         print("Student name can't be empty.Enter again name of student!!!")
                     else:
                         break  # Still not good!!!Dob is still entered by letters
-
+                
                 self.driver.students.append(Student(driver, sid, sname, sdob))
-                #Writing data to students.dat file
-                pickle.dump(Student(driver, sid, sname, sdob), self.data)
+                self.driver.studentmark.append(Student(driver, sid, sname, sdob))
                 
         else:
             print(
@@ -132,8 +124,7 @@ class Input:
                     else:
                         break
                 self.driver.courses.append(Course(driver, cid, cname, credit))
-                #Writing data to students.dat file
-                pickle.dump(Course(driver, cid, cname, credit), self.data)
+                self.driver.studentmark.append(Course(driver, cid, cname, credit))
 
         else:
             print(
@@ -173,8 +164,8 @@ class Input:
                         value = math.floor(value * 10) / 10.0
 
                         self.driver.marks.append(Mark(driver, student, course, value))
-                        # Writing data to file students.dat
-                        pickle.dump(Mark(driver, student, course, value), self.data)
+                        self.driver.studentmark.append(Mark(driver, student, course, value))
+                    
         else:
             print("Course id is not existed!!!")
     
